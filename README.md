@@ -9,7 +9,9 @@ We provide support for zero-shot evaluations on BLiMP, as well as scripts for fi
 
 We also provide a [Colab demo](https://colab.research.google.com/drive/1HX2D3wztO81tKcqCeV_ecRcEUseBVuTc?usp=sharing) of the evaluation pipeline as a demonstration of how to use the code.
 
-If you have questions about or suggestions for this code, please contact Aaron Mueller. We also welcome pull requests!
+If you have questions about or suggestions for this code, please open an issue and consider [joining our Slack](https://join.slack.com/t/babylmchallenge/shared_invite/zt-1s8el4mro-qvVO447l3POBZcUNvMWQcg). We also welcome pull requests!
+
+We adapt this primarily from the BigScience fork of [lm-eval-harness](https://github.com/bigscience-workshop/lm-evaluation-harness), originally by EleutherAI. Support for masked language models was made possible by [minicons](https://github.com/kanishkamisra/minicons)' implementation of MLM scoring (itself based on [code by Salazar et al. (2020)](https://github.com/awslabs/mlm-scoring)).
 
 ## Installation
 
@@ -100,7 +102,7 @@ Here are baseline scores. These are all accuracies, unless otherwise noted by (F
 | Model | Anaphor Agr. | Agr. Structure | Binding | Control/Raising | D-N Agr. | Ellipsis | Filler-Gap | Irregular Forms | Island Effects | NPI Licensing | Quantifiers | S-V Agr. |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | OPT-125m | 94.9 | 73.8 | 73.8 | 72.2 | 93.1 | 80.5 | 73.6 | 80.8 | 57.8 | 51.6 | 74.5 | 77.3 |
-| RoBERTa-base | 17.4 | 71.3 | 71 | 67.1 | 93.1 | 83.8 | 68.0 | 89.6 | 54.5 | 66.3 | 70.3 | 76.2 |
+| RoBERTa-base | 89.5 | 71.3 | 71 | 67.1 | 93.1 | 83.8 | 68.0 | 89.6 | 54.5 | 66.3 | 70.3 | 76.2 |
 | T5-base | 66.7 | 61.2 | 59.4 | 59.8 | 53.8 | 49.1 | 70.0 | 75.5 | 43.6 | 45.6 | 34.2 | 53.2 |
 
 *(Super)GLUE*
@@ -113,6 +115,8 @@ Here are baseline scores. These are all accuracies, unless otherwise noted by (F
 -----------------------
 
 These are naïve baselines that are meant to provide a starting point for investigation. We look forward to seeing how you will improve upon these!
+
+We [provide the code](https://github.com/babylm/baseline-pretraining) used to train these baselines. We do not recommend using this for your own models, as it loads tokenizers from huggingface instead of training from scratch on the BabyLM data (which does not qualify for any of our tracks). That said, we found (in some quick preliminary experiments) that simply training tokenizers on the BabyLM data often outperforms these baselines!
 
 ## Citation
 If you use the datasets or code from this repository, please cite the BabyLM Call for Papers:
